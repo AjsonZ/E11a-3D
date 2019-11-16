@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/Spatial_crate.gd" type="Script" id=1]
+[ext_resource path="res://Scene/Crate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scene/BlockLarge.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scene/object/blockLevel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scene/object/blockSlope.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scene/object/BlockHexagon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scene/Character.tscn" type="PackedScene" id=7]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.282353, 0.72549, 0.00784314, 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 10, 10 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( 5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, -5 )
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Ground" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+shape = SubResource( 3 )
+
+[node name="Crate" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256999, 0 )
+
+[node name="Crate2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.826489, -0.148737 )
+
+[node name="Crate3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41, 0 )
+
+[node name="Crate4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99857, 0.231099 )
+
+[node name="CameraHub" type="Spatial" parent="."]
+transform = Transform( 0.99993, 0, 0.0118016, 0, 1, 0, -0.0118016, 0, 0.99993, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="CameraHub"]
+transform = Transform( -0.999993, -0.0033434, -0.00188287, -0.00378656, 0.780446, 0.625212, -0.000620862, 0.625215, -0.780453, 0.159223, 4.37937, -7.43905 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.411729, 0.911306, 0, -0.911306, -0.411729, 0, 4.74504, 0 )
+shadow_enabled = true
+
+[node name="Block Large" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+
+[node name="blockLevel" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 2.38419e-007, 0, -1 )
+
+[node name="blockSlope" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+
+[node name="BlockHexagon" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0.5 )
+
+[node name="BlockHexagon2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 2.5 )
+
+[node name="BlockHexagon3" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 2.5 )
+
+[node name="BlockHexagon4" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, 2.5 )
+
+[node name="Character" parent="." instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -4, 0.5, -3.5 )

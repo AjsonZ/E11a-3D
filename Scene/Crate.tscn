@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://platformerkit/crate.glb" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.27534, 0.267207, 0.259288 )
+
+[node name="Crate" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="crate(Clone)" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.25, 0.5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00890561, -0.0111876, -0.00146294 )
+shape = SubResource( 1 )
